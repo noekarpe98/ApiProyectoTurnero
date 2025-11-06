@@ -12,17 +12,17 @@ export const getInturnos = async (req, res) => {
     
 }
 
-export const getInfraccionesPatente = async (req, res) => {
+export const getInestado = async (req, res) => {
     try {
-        const dominio = req.params.dominio;
-        console.log('Dominio:', dominio);
+        const estado = req.params.estado;
+        console.log('Estado:', estado);
 
-        const [rows] = await pool.query('SELECT dni, nombre, dominio, descripcion, lugar, fecha FROM infracciones_maestro WHERE dominio = ?', [dominio]);
+        const [rows] = await pool.query('SELECT * FROM turnos WHERE estado = ?', [estado]);
         console.log('Rows:', rows);
 
         if (rows.length === 0) {
             return res.status(404).json({
-                message: 'Infracción no encontrada'
+                message: ' no encontrada'
             });
         }
 
