@@ -1,8 +1,8 @@
 import {pool} from '../db.js'
 
-export const getInfracciones = async (req, res) => {
+export const getInturnos = async (req, res) => {
     try{
-        const [rows] = await pool.query('SELECT * FROM infracciones_maestro')
+        const [rows] = await pool.query('SELECT * FROM turnos')
         res.json(rows) 
     } catch (error) {
       return res.status(500).json({
